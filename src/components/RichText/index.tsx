@@ -1,8 +1,19 @@
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import {
   DefaultNodeTypes,
+  SerializedAutoLinkNode,
   SerializedBlockNode,
+  SerializedHorizontalRuleNode,
   SerializedLinkNode,
+  SerializedListItemNode,
+  SerializedListNode,
+  SerializedParagraphNode,
+  SerializedQuoteNode,
+  SerializedRelationshipNode,
+  SerializedTextNode,
+  SerializedUploadNode,
+  TypedEditorState,
+  SerializedHeadingNode,
 } from '@payloadcms/richtext-lexical'
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
 import {
@@ -25,6 +36,51 @@ import { cn } from '@/utilities/ui'
 type NodeTypes =
   | DefaultNodeTypes
   | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+
+// const editorState: TypedEditorState<
+//   | DefaultNodeTypes
+//   | SerializedBlockNode<CTABlockProps | MediaBlockProps | BannerBlockProps | CodeBlockProps>
+//   | SerializedAutoLinkNode
+//   | SerializedHorizontalRuleNode
+//   | SerializedLinkNode
+//   | SerializedListItemNode
+//   | SerializedListNode
+//   | SerializedParagraphNode
+//   | SerializedQuoteNode
+//   | SerializedRelationshipNode
+//   | SerializedTextNode
+//   | SerializedUploadNode
+//   | SerializedHeadingNode
+// > = {
+//   root: {
+//     type: 'root',
+//     direction: 'ltr',
+//     format: '',
+//     indent: 0,
+//     version: 1,
+//     children: [
+//       {
+//         children: [
+//           {
+//             detail: 0,
+//             format: 0,
+//             mode: 'normal',
+//             style: '',
+//             text: 'Some text. Every property here is fully-typed',
+//             type: 'text',
+//             version: 1,
+//           },
+//         ],
+//         direction: 'ltr',
+//         format: '',
+//         indent: 0,
+//         type: 'paragraph',
+//         textFormat: 0,
+//         version: 1,
+//       },
+//     ],
+//   },
+// }
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
